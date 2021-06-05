@@ -79,7 +79,7 @@ public class BankDataFileUpdater implements Serializable {
             System.out.println("############################################################");
             System.out.println("New files have been added to the classpath - Please restart your build process!");
             System.out.println("############################################################");
-            System.exit(1);
+            System.exit(0);
         }
     }
 
