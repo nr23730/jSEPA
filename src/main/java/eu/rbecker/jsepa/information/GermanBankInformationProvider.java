@@ -85,7 +85,11 @@ public class GermanBankInformationProvider implements BankInformationProvider {
         String code = l.substring(0, 8).trim();
         String name = l.substring(9, 67).trim();
         String shortName = l.substring(107, 134).trim();
-        String bic = l.substring(139, 150).trim();
+        int beginBic = 139;
+        while ((l.charAt(beginBic) + "").matches("[0-9]")) {
+            beginBic++;
+        }
+        String bic = l.substring(beginBic, beginBic + 11).trim();
         BankInformation bi = new BankInformation(name, shortName, code, bic);
         return bi;
     }
