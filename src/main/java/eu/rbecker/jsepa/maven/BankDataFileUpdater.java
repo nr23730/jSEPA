@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -116,8 +117,10 @@ public class BankDataFileUpdater implements Serializable {
 
     private String fetchUrl(String urlString) throws MalformedURLException, IOException {
         URL url = new URL(urlString);
+        HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
+        httpcon.addRequestProperty("Accept", "*/*");
         String result;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.ISO_8859_1))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpcon.getInputStream(), StandardCharsets.ISO_8859_1))) {
             result = reader
                 .lines()
                 .parallel()
