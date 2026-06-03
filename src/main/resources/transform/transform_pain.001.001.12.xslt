@@ -23,7 +23,7 @@
 
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.12">
+                xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.09">
 
     <xsl:output method="xml" indent="yes"/>
 
